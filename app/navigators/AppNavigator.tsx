@@ -8,6 +8,7 @@ import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
+  
 } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { StackScreenProps } from "@react-navigation/stack"
@@ -16,8 +17,10 @@ import React from "react"
 import { useColorScheme } from "react-native"
 import Config from "../config"
 import {
-  WelcomeScreen,
+  DetailScreen,
 } from "../screens"
+import { TabNavigator } from "./TabNavigator" // @demo remove-current-line
+
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 
 /**
@@ -34,7 +37,10 @@ import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  Welcome: undefined
+  Home: undefined
+  Tabs: undefined
+  Detail: undefined
+  Car: undefined
   // 🔥 Your screens go here
 }
 
@@ -57,7 +63,8 @@ const AppStack = observer(function AppStack() {
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
     >
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="Tabs" component={TabNavigator} />
+          <Stack.Screen name="Detail" component={DetailScreen} />
       {/** 🔥 Your screens go here */}
     </Stack.Navigator>
   )
